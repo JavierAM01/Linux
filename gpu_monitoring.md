@@ -42,7 +42,59 @@ In larger clusters, GPU usage is often controlled by resource managers like SLUR
 
 Resource managers help allocate and manage resources efficiently, ensuring fair usage across users. Always check your cluster's specific documentation for the correct usage.
 
-## 4. Additional Notes
+## 4. Monitoring the Queue and GPU Usage
+
+To monitor your jobs and GPU usage on the cluster, you can use the following commands:
+
+### ✅ Check Your Running Jobs
+
+To see which jobs you currently have in the queue:
+
+```
+squeue -u [username]
+```
+
+Replace `[username]` with your actual username.
+
+### ❌ Kill a Running Job or Process
+
+To cancel a job scheduled with SLURM:
+
+```
+scancel [job_id]
+```
+
+If you want to kill a process directly by its process ID (PID):
+
+```
+skill [process_id]
+```
+
+### 📊 Check GPU Usage
+
+To monitor GPU usage and see which users are occupying which GPUs:
+
+```
+nvidia-smi
+```
+
+This will display a table with GPU usage, memory, running processes, and their associated user.
+
+You can also filter by user or process with:
+
+```
+nvidia-smi | grep [username]
+```
+
+Or for a more detailed and dynamic view (if installed on the cluster):
+
+```
+watch -n 1 nvidia-smi
+```
+
+> 🖥️ *Tip: This refreshes GPU status every second, like a GPU-specific `top` command.*
+
+## 5. Additional Notes
 
 - **Permissions**: GPU access can be restricted by system administrators or policies. Always check with your system administrator if you suspect access issues.
 - **CUDA Installation**: Ensure that CUDA is installed and compatible with your deep learning libraries (e.g., PyTorch, TensorFlow) for GPU utilization.
