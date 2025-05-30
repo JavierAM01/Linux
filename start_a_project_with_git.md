@@ -8,12 +8,36 @@ This guide walks through setting up a collaborative project with GitHub, includi
 
 1. Clone the repository from GitHub:
    ```bash
-   git clone https://github.com/username/project-name.git
+   git clone https://github.com/<username>/<project-name>.git
    ```
 2. Navigate into the project directory:
    ```bash
    cd project-name
    ```
+
+#### What if the repo is private?
+
+Get a github token and clone as follow:
+
+```bash
+git clone https://<username>:<github_token>@github.com/<username>/<project-name>.git
+```
+
+if the token expires mid development then check the current token (status) as:
+
+```bash
+git remote -v
+```
+
+<output>
+
+and change it as
+
+```bash
+git remote set-url origin <output_with_new_token>
+```
+
+
 
 ### Step 2: Create a Virtual Environment
 
